@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="tl">
+<head>
+    <meta charset="UTF-8">
+    <title>Orange Energy Reviewer Interface</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Montserrat', sans-serif;
+            background: #FFF5F0; /* Light orange tint bg */
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        /* Orange Gradient Header */
+        #top-bar {
+            background: linear-gradient(135deg, #FF9966, #FF5E62);
+            color: white;
+            padding: 12px 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 15px rgba(255, 94, 98, 0.3);
+            z-index: 100;
+            border-bottom: 3px solid #E67E22;
+        }
+
+        .brand {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .brand h2 {
+            margin: 0;
+            font-size: 1.4rem;
+            letter-spacing: 1px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+        }
+
+        .motivation-text {
+            font-size: 0.85rem;
+            opacity: 0.9;
+            font-weight: 400;
+        }
+
+        /* Timer Styling - Sunset Vibes */
+        .timer-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .timer-box {
+            background: #FFFFFF;
+            color: #E67E22;
+            padding: 8px 18px;
+            border-radius: 12px;
+            font-size: 1.3rem;
+            font-weight: 700;
+            box-shadow: inset 0 2px 4px rgba(0,0,0,0.1);
+            border: 2px solid #FFD3B6;
+            min-width: 100px;
+            text-align: center;
+        }
+
+        /* Iframe Container */
+        #content-frame {
+            flex-grow: 1;
+            border: none;
+            width: 100%;
+            height: 100%;
+            background: white;
+        }
+
+        /* Pulse animation for the last 5 minutes */
+        .low-time {
+            animation: pulse 1s infinite;
+            color: #d35400 !important;
+            border-color: #e67e22 !important;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+    </style>
+</head>
+<body>
+
+<div id="top-bar">
+    <div class="brand">
+        <h2>🔥 NASH Orange Book Set A</h2>
+        <span class="motivation-text">"The secret of getting ahead is getting started." 🚀</span>
+    </div>
+    <div class="timer-container">
+        <span style="font-weight: bold; font-size: 0.9rem;">TIME REMAINING:</span>
+        <div class="timer-box" id="timer">01:00:00</div>
+    </div>
+</div>
+
+<iframe src="NASH Orange Set A iframe.html" id="content-frame"></iframe>
+
+<script>
+    // Timer Logic for 1 Hour
+    let time = 1 * 60 * 60; // 60 minutes
+    const timerDisplay = document.getElementById('timer');
+
+    const countdown = setInterval(() => {
+        let hours = Math.floor(time / 3600);
+        let mins = Math.floor((time % 3600) / 60);
+        let secs = time % 60;
+
+        // Display format
+        timerDisplay.innerHTML = 
+            (hours < 10 ? '0' : '') + hours + ":" + 
+            (mins < 10 ? '0' : '') + mins + ":" + 
+            (secs < 10 ? '0' : '') + secs;
+
+        // Visual warning if less than 5 minutes
+        if (time <= 300) {
+            timerDisplay.classList.add('low-time');
+        }
+
+        if (time <= 0) {
+            clearInterval(countdown);
+            timerDisplay.innerHTML = "00:00:00";
+            alert("Oras na! Break muna nang konti para sa mental health. Balik ulit mamaya!");
+        }
+        time--;
+    }, 1000);
+</script>
+
+</body>
+</html>
