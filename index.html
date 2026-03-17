@@ -14,57 +14,35 @@
         }
 
         body {
-            margin: 0;
-            padding: 0;
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            background-color: var(--bg-light);
-            background-image: radial-gradient(#FF8C4211 1px, transparent 1px);
-            background-size: 30px 30px; /* Subtle dots background for clean look */
-            color: var(--text-main);
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-        }
+        margin: 0;
+        padding: 0;
+        font-family: 'Plus Jakarta Sans', sans-serif;
+        background-color: var(--bg-light);
+        background-image: radial-gradient(#FF8C4211 1px, transparent 1px);
+        background-size: 30px 30px;
+        color: var(--text-main);
+        /* FIX STARTS HERE */
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start; /* Start from top to prevent overlapping */
+        min-height: 100vh;
+        padding: 60px 20px; /* Space on top and bottom */
+        box-sizing: border-box;
+    }
 
-        .header {
-            text-align: center;
-            margin-bottom: 50px;
-        }
+    .header {
+        text-align: center;
+        margin-bottom: 40px;
+    }
 
-        .header h1 {
-            font-size: 2.5rem;
-            font-weight: 800;
-            color: var(--text-main);
-            margin-bottom: 10px;
-            letter-spacing: -1px;
-        }
-
-        .header h1 span {
-            color: var(--primary-orange);
-        }
-
-        .quote-box {
-            background: #FFFFFF;
-            padding: 10px 25px;
-            border-radius: 50px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-            display: inline-block;
-        }
-
-        .quote {
-            color: #636e72;
-            font-style: italic;
-            font-size: 0.95rem;
-            margin: 0;
-        }
-
-        .container {
-            display: flex;
-            gap: 30px;
-            perspective: 1000px;
-        }
+    .container {
+        display: flex;
+        gap: 30px;
+        flex-wrap: wrap; /* Para mag-stack sa mobile */
+        justify-content: center;
+        margin-bottom: 50px; /* Space before the footer */
+    }
 
         .card {
             width: 320px;
@@ -134,13 +112,34 @@
         .card-gubatan .btn-start { background: #4A90E2; color: white; }
         .card-orange .btn-start { background: #FF8C42; color: white; }
 
-        .footer-note {
-            position: absolute;
-            bottom: 30px;
-            font-size: 0.8rem;
-            color: #b2bec3;
-            font-weight: 600;
-            letter-spacing: 1px;
+      .footer-section {
+        width: 100%;
+        max-width: 500px;
+        text-align: center;
+        margin-top: auto; /* Push to bottom naturally */
+    }
+    
+    /* Card Styles (Keep your existing card styles here) */
+    .card {
+        width: 320px;
+        background: #FFFFFF;
+        border-radius: 24px;
+        padding: 40px 30px;
+        text-decoration: none;
+        color: var(--text-main);
+        transition: all 0.3s ease;
+        text-align: center;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        border: 2px solid transparent;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 20px 40px rgba(255, 140, 66, 0.15);
+        border-color: var(--primary-orange);
+    }
         }
     </style>
 </head>
@@ -169,17 +168,18 @@
         </a>
     </div>
 
-<br><br><br><br><br><br>
-
-   <div class="footer-note" style="text-align: center; margin-top: 20px; padding-bottom: 20px;">
-    <hr style="border: 0; height: 1px; background-image: linear-gradient(to right, transparent, #FF8C42, transparent); width: 300px; margin: 0 auto 20px auto;">
-    
-    <div style="font-size: 0.7rem; letter-spacing: 4px; color: #95a5a6; margin-bottom: 10px; font-weight: 600;">
-        DEDICATION • INTEGRITY • EXCELLENCE
-    </div>
-    
-    <div style="font-size: 1.8rem; color: #2D3436; font-weight: 300; font-family: 'Georgia', serif; font-style: italic;">
-        Ma'am <span style="font-weight: 800; color: #FF8C42; font-style: normal; font-family: 'Plus Jakarta Sans', sans-serif;">Eve</span>
+<div class="footer-section">
+        <hr style="border: 0; height: 1px; background-image: linear-gradient(to right, transparent, #FF8C42, transparent); width: 250px; margin: 0 auto 20px auto;">
+        
+        <div style="font-size: 0.7rem; letter-spacing: 4px; color: #95a5a6; margin-bottom: 10px; font-weight: 600;">
+            DEDICATION • INTEGRITY • EXCELLENCE
+        </div>
+        
+        <div style="font-size: 1.8rem; color: #2D3436; font-weight: 300; font-family: 'Georgia', serif; font-style: italic;">
+            Ma'am <span style="font-weight: 800; color: #FF8C42; font-style: normal; font-family: 'Plus Jakarta Sans', sans-serif;">Eve</span>
+        </div>
+        
+        
     </div>
     
   
